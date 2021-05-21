@@ -10,7 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-//const formData = document.querySelectorAll(".formData");
+const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelectorAll('.close');
 
 // launch modal event
@@ -20,7 +20,11 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
-// click sur le bouton (X) de la fenêtre d'inscription
-redCloseBtn.addEventListener('click', function() {
-	closeModal();
-})
+// close modal event
+closeBtn.forEach((btn) => btn.addEventListener('click', closeModal));
+
+// close modal form
+function closeModal() {
+	modalbg.classList.remove('select-block');
+	modalbg.classList.add('select-hide');
+}
