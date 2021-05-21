@@ -319,6 +319,7 @@ input[data-error]::after {
 .btn-submit:hover {
   background: #3876ac;
 }
+
 /* custom select styles */
 .custom-select {
   position: relative;
