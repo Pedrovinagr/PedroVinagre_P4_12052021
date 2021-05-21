@@ -13,12 +13,14 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelectorAll('.close');
 
+//------------------------------------#1 TODO : fermer le modale------------------------------
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "block";
+  modalbg.classList.remove('select-hide');
+	modalbg.classList.add('select-block');
 }
 // close modal event
 closeBtn.forEach((btn) => btn.addEventListener('click', closeModal));
