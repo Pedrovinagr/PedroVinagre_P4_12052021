@@ -20,7 +20,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
-// Lors du click sur le bouton "fermer" de la fenêtre de confirmation d'inscription, ferme et réinitialise de formulaire d'inscription.
+// click sur le bouton (X) de la fenêtre d'inscription
 redCloseBtn.addEventListener('click', function() {
 	closeModal();
 })
