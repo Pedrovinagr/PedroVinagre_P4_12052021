@@ -525,8 +525,7 @@ footer {
     content: unset;
   }
   .hero-content .btn-signup {
-    display: flex;
-    margin: auto;
+    display: none;
   }
   
   .hero-headline {
