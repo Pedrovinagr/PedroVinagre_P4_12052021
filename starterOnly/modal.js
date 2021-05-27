@@ -19,7 +19,7 @@ const birthDate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 const checkbox1 = document.getElementById('checkbox1');
 const formData = document.getElementsByClassName('formData');
-const btnSubmit = document.getElementById('btn_Submit');
+const btnSubmit = document.getElementById('btn_submit');
 const reserve = document.getElementById('reserve');
 
 //------------------------------------#1 TODO : fermer le modale------------------------------
