@@ -48,8 +48,10 @@ function validityText(text) {
 	return (text.value !== '' && text.value.length >= 2);
 }
 
-function validityEmail(email) {
-	return (/^([a-z|0-9](\.|_){0,1})+[a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$/.test(email.value));
+var expressionReguliere = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+
+function validation(email) {
+	return (expressionReguliere.test(email.value))
 }
 
 function validityValue(val) {
@@ -132,3 +134,76 @@ function validityForm() {
 	return (inputsFormStatus.includes(false) !== true);
 }
 
+//Vérifie les champs du formulaire à la soumission.
+form.addEventListener('submit', function (event) {
+	//Ne prend pas en compte l'action par default du bouton de soumission "c'est partie".
+	event.preventDefault();
+
+	//Si formulaire valide, transforme le formulaire d'inscription en fenêtre de confirmation de réservation.
+	if (validateForm()) {
+		//Cache tous les enfants .formData du formulaire #reserve
+		for (child of reserveChildren) {
+			if (child.className == 'formData') {
+				child.classList.add('select-hide');
+			}
+		}
+		//cache le bouton close
+		document.querySelector('.close').classList.add('select-hide');
+		//cache le bouton btn_submit de formulaire #reserve
+		btn_submit.classList.add('select-hide');
+		//change la classe et le texte du paragraphe "Quelle(s) ville(s)"
+		document.querySelector('#reserve>p').classList.replace('text-label','text-label-valid-form');
+		document.querySelector('#reserve>p').innerHTML = "Merci pour votre inscription ! Votre réservation a été enregistrée.";
+		// ajoute class et texte au nouveau bonton "fermer"
+		redCloseBtn.classList.add('btn-submit');
+		redCloseBtn.innerHTML = 'fermer';
+		// ajoute bouton dans HTML en enfant du formulaire.
+		reserve.appendChild(redCloseBtn);
+	}
+	//si formulaire non validé, retourne FALSE
+	return false;
+})
+
+// Met en visible et réinitialise tous les champs du formulaire d'inscription
+function resumModal(){
+	for (child of reserveChildren) {
+		//rend visible toutes les div .formData et supprime la classe temporaire
+		if (child.className == 'formData select-hide') {
+			child.classList.replace('select-hide','select-block');
+			child.classList.remove('select-block');
+		}
+	}
+	//affiche le bouton close
+	document.querySelector('.close').classList.replace('select-hide','select-block');
+	document.querySelector('.close').classList.remove('select-block');
+	//remet la class et le texte d'origine au paragraphe du formulaire de reservation.
+	document.querySelector('#reserve>p').classList.replace('text-label-valid-form','text-label');
+	document.querySelector('#reserve>p').innerHTML = 'Quelle(s) ville(s) ?';
+	//supprime le bouton "fermer" du HTML
+	reserve.removeChild(redCloseBtn);
+
+	//bouton "C'est parti" passe de caché à visible et supprime la classe temporaire
+	btn_submit.classList.replace('select-hide','select-block');
+	btn_submit.classList.remove('select-block');
+}
+
+function initModal(){
+	for (child of reserveChildren) {
+		//vide les champs de texte
+		if (child.querySelector('.text-control')){
+			child.querySelector('.text-control').value = '';
+		}
+	}
+
+	//Décoche les checkboxs cochées
+	for (item of document.querySelectorAll('.checkbox-input:checked')){
+		item.checked = false
+	}	
+}
+
+// Lors du click sur le bouton "fermer" de la fenêtre de confirmation d'inscription, ferme et réinitialise de formulaire d'inscription.
+redCloseBtn.addEventListener('click', function() {
+	closeModal();
+	resumModal();
+	initModal();
+})
