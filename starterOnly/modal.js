@@ -41,14 +41,15 @@ function closeModal() {
 
 //------------------------------------#2 Validation des données ------------------------------
 // Check DATA
+
+var exprRegulValueLenht = /'' && text.value.length >= 2/;
 function validityText(text) {
-	return (text.value !== '' && text.value.length >= 2);
+	return (text.value !== 'exprRegulValueLenht');
 }
 
-var expressionReguliere = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
-
+var exprRegulEmail = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 function validation(email) {
-	return (expressionReguliere.test(email.value))
+	return ('exprRegulEmail'.test(email.value))
 }
 
 function validityValue(val) {
