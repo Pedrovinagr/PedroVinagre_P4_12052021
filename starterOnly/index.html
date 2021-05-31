@@ -10,13 +10,11 @@
   </head>
 
   <body>
-<!---------------------------------------- hearder ------------------------------------> 
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
         <img alt="logo" src="Logo.png"/>
       </div>
 
-    <!------------------------------------ menu hearder ------------------------------->  
       <div class="main-navbar">
         <a href="#" class="active"><span>Accueil</span></a>
         <a href="#"><span>Détails de l'évènement</span></a>
@@ -27,40 +25,36 @@
           <i class="fa fa-bars"></i>
         </a>
       </div>
+
     </div>
-<!---------------------------------------- main ------------------------------------> 
+ 
     <main>
       <div class="hero-section">
-        <div class="hero-content">
-        <!---------------------------------------- Title ------------------------------------>           
+        <div class="hero-content">        
           <h1 class="hero-headline">
             Marathon national<br>
             de jeux vidéos
           </h1>
-        
-          <!------------------------------------ description ---------------------------------->           
           <p class="hero-text">
             Vous aimez jouer ? Notre prochain évènement gaming est ouvert
             aux réservations... Places limitées !
           </p>
-        <!-------------------------------- button "m'inscrire" ------------------------------>          
-          <button class="btn-signup modal-btn">
+          <button class="btn-signup modal-btn"><!-- button desktop--> 
             je m'inscris
           </button>
         </div>
-      <!------------------------------------ Image ---------------------------------->        
+
         <div class="hero-img">
           <img src="./bg_img.jpg" alt="img" />
         </div>
-        <!-------------------------------- buttom "m'inscrire" --------------------------------> 
-        <button class="btn-signup modal-btn">
+        
+        <button class="btn-signup modal-btn"><!-- button responsive--> 
           je m'inscris
         </button>
       </div>
-<!-------------------------------- Registration Form ------------------------------> 
-      <div class="bground">
-        <div class="content">
-<!-------------------------------- close windows ------------------------------>           
+
+      <div class="bground"><!--Form--> 
+        <div class="content">        
           <span class="close"></span>
           <div class="modal-body">
             <form 
@@ -68,9 +62,8 @@
             id="reserve" 
             action="index.html"
             method="get"
-            > 
-            <!-- onsubmit="return validate();"-->
-<!-------------------------------- Identity ------------------------------> 
+            > <!-- onsubmit="return validate();"-->
+            
               <div class="formData">
                 <label for="firts">Prénom</label><br>
                 <input 
@@ -113,7 +106,7 @@
                 >
                 <br>
               </div>
-<!-------------------------------- experience ------------------------------> 
+
               <div class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" 
@@ -125,8 +118,6 @@
               </div>
 
               <p class="text-label">Quelles villes ?</p>
-
-<!-------------------------------- citybox ------------------------------> 
               <div class="formData" id="locations">
                 <input 
                 class="checkbox-input" 
@@ -200,7 +191,7 @@
                   Portland
                 </label>
               </div>
-<!-------------------------------- checkbox ------------------------------> 
+
               <div class="formData">
                 <input 
                 class="checkbox-input" 
@@ -223,7 +214,7 @@
                 </label>
                 <br>
               </div>
-<!-------------------------------- Registration button ------------------------------> 
+ 
               <input 
               class="btn-submit"
               id="btn_submit"
@@ -234,7 +225,7 @@
         </div>
       </div>
     </main>
-<!-------------------------------- Footer ------------------------------> 
+
     <footer>
       <p class="copyrights">
         Copyright 2014 - 2020, GameOn Inc.

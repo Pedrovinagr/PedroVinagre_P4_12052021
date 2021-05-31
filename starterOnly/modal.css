@@ -1,4 +1,4 @@
-/*--------------------VARIABLE-------------------*/
+/*VARIABLE*/
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
@@ -490,7 +490,7 @@ footer {
   margin: 0 20px;
 }
 
-/*--------------------RESPONSIVE-------------------*/
+/*RESPONSIVE*/
 @media screen and (max-width: 800px) {
   main {
     text-align: left;
@@ -603,7 +603,7 @@ footer {
   }
 } 
 
-/*--------------------ANIMATION-------------------*/
+/*ANIMATION*/
 @keyframes modalopen {
   from {
     opacity: 0;
