@@ -64,7 +64,7 @@ function validityCheckbox(checkbox) {
 	return (checkbox.checked);
 }
 
-function refreshErrorMessage(domElement, isValid, message) {
+function errorMessage(domElement, isValid, message) {
 	if (isValid) {
 		domElement.setAttribute('data-error-visible', 'false');
 	} else {
@@ -76,8 +76,8 @@ function refreshErrorMessage(domElement, isValid, message) {
 // Valid form
 function validityForm() {
 
-	//DATA	
-	var inputsFormStatus = 
+	//SAVE DATA	
+	var inputForm = 
 		[validityText(first),
 		validityText(last),
 		validityEmail(email),
@@ -87,47 +87,47 @@ function validityForm() {
 		validityCheckbox(checkbox1)];
 
 	// error message
-	refreshErrorMessage(
+	errorMessage(
 		first.parentElement,
 		validityText(first),
 		'Veuillez entrer 2 caractères ou plus pour le champ du nom.'
 	)
 
-	refreshErrorMessage(
+	errorMessage(
 		last.parentElement,
 		validityText(last),
 		'Veuillez entrer 2 caractères ou plus pour le champ du nom.'
 	)
 
-	refreshErrorMessage(
+	errorMessage(
 		email.parentElement,
 		validityText(email),
 		'Veuillez entrer une adresse mail valide.'
 	)
 
-	refreshErrorMessage(
+	errorMessage(
 		birthDate.parentElement,
 		validityValue(birthDate),
 		'Vous devez entrer votre date de naissance.'
 	)
 
-	refreshErrorMessage(
+	errorMessage(
 		quantity.parentElement,
 		validityValue(quantity),
 		'Vous devez entrer une valeur numérique.'
 	)
 
-	refreshErrorMessage(
+	errorMessage(
 		formData[5],
 		validityLocations('location'),
 		"Vous devez choisir une option."
 	)
 
-	refreshErrorMessage(
+	errorMessage(
 		checkbox1.parentElement,
 		validityCheckbox(checkbox1),
 		'Vous devez vérifier que vous acceptez les termes et conditions.'
 	)
 
-	return (inputsFormStatus.includes(false) !== true);
+	return (inputForm.includes(false) !== true);
 }
