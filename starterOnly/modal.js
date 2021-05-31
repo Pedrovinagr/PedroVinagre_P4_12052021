@@ -19,6 +19,8 @@ const quantity = document.getElementById('quantity');
 const checkbox1 = document.getElementById('checkbox1');
 const formData = document.getElementsByClassName('formData');
 const btn_submit = document.getElementById('btn_submit');
+const form = document.getElementById('reserve');
+const FormWindows = form.children;
 
 
 //------------------------------------#1 TODO : fermer le modale------------------------------
@@ -44,12 +46,12 @@ function closeModal() {
 
 var exprRegulValueLenht = /'' && text.value.length >= 2/;
 function validityText(text) {
-	return (text.value !== 'exprRegulValueLenht');
+	return (text.value !== exprRegulValueLenht);
 }
 
 var exprRegulEmail = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 function validation(email) {
-	return ('exprRegulEmail'.test(email.value))
+	return (exprRegulEmail.test(email.value))
 }
 
 function validityValue(val) {
@@ -131,3 +133,32 @@ function validityForm() {
 
 	return (inputForm.includes(false) !== true);
 }
+
+form.addEventListener('submit', function(e) {
+	e.preventDefault();
+
+	if (validityForm()) {
+		for (child of FormWindows) {
+			if (child.className == 'formData') {
+				child.classList.add('select-hide');
+			}
+		}
+
+		var closeHide = document.querySelector('.close');
+		closeHide.classList.add('select-hide');
+
+		var submitHide = document.getElementById('btn_submit');
+		submitHide.classList.add('select-hide');
+
+		var formConf = document.querySelector('#reserve>p')
+		formConf.classList.replace('text-label','text-label-valid-form');
+		formConf.innerHTML = 
+		"Merci pour votre inscription ! Votre réservation a été enregistrée.";
+
+		var NewBtn = document.createElement('button');
+		NewBtn.classList.add('btn-submit');
+		NewBtn.innerHTML = 'fermer';
+		form.appendChild(NewBtn);
+	}
+	return false;
+})
