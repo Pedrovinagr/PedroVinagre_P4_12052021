@@ -35,23 +35,36 @@ function closeModal() {
 const form = document.getElementById('reserve');
 const firstName = document.getElementById('first');
 const lastName = document.getElementById('last');
+const email = document.getElementById('email');
+const birthdate = document.getElementById('birthdate');
+const quantity = document.getElementById('quantity');
+
 const firsError = document.getElementById('firstError');
 const lastError = document.getElementById('lastError');
+const emailError = document.getElementById('emailError');
+const birthdateError = document.getElementById('birthdateError');
+const quantityError = document.getElementById('quantityError');
 
 form.addEventListener('submit', function(event) {
     firstError.innerHTML = '';
     lastError.innerHTML = '';
+    emailError.innerHTML = '';
+    birthdateError.innerHTML = '';
+    quantityError.innerHTML = '';
+
     firstName.style.border = '';
     lastName.style.border = '';
-    console.log('form submit');
-    console.log(event);
+    email.style.border = '';
+    birthdate.style.border = '';
+    quantity.style.border = '';
+
     event.preventDefault();
-    console.log('lastName value');
+
     const firstValue = first.value.trim();
     const lastValue = last.value.trim();
-
-    console.log(lastValue);
-    console.log(lastValue.length); 
+    const emailFormat = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/i;
+    const birthDateValue = birthdate.value.trim();
+    const quantityValue = quantity.value.trim();
 
     if(firstValue != '' && firstValue.length >= 2) {
 
@@ -61,7 +74,9 @@ form.addEventListener('submit', function(event) {
       firstError.style.fontSize = '0.9rem'
       firstName.style.border = '2px solid red';
       
-    }if(lastValue != '' && firstValue.length >= 2) {
+    }
+    
+    if(lastValue != '' && lastValue.length >= 2) {
 
     } else {
       lastError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Nom.';
@@ -69,8 +84,33 @@ form.addEventListener('submit', function(event) {
       lastError.style.fontSize = '0.9rem'
       lastName.style.border = '2px solid red';
     }
+    
+    if(emailFormat.test(email.value)) {
 
+    } else {
+      emailError.innerHTML = 'Veuillez entrer une adresse mail valide.';
+      emailError.style.color = 'red';
+      emailError.style.fontSize = '0.9rem'
+      email.style.border = '2px solid red';
+    }
 
+    if(birthDateValue != '' && birthDateValue.length >= 8) {
+
+    } else {
+      birthdateError.innerHTML = 'Vous devez entrer votre date de naissance.';
+      birthdateError.style.color = 'red';
+      birthdateError.style.fontSize = '0.9rem'
+      birthdate.style.border = '2px solid red';
+    }
+
+    if(quantityValue != '' && quantityValue.length >= 1) {
+
+    } else {
+      quantityError.innerHTML = 'Vous devez entrer une valeur numérique.';
+      quantityError.style.color = 'red';
+      quantityError.style.fontSize = '0.9rem'
+      quantity.style.border = '2px solid red';
+    }
 
 });
 
