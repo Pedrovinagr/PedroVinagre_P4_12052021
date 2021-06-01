@@ -11,17 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeBtn = document.querySelectorAll('.close');
-const first = document.getElementById('first');
-const last = document.getElementById('last');
-const email = document.getElementById('email');
-const birthDate = document.getElementById('birthdate');
-const quantity = document.getElementById('quantity');
-const checkbox1 = document.getElementById('checkbox1');
-const formData = document.getElementsByClassName('formData');
-const btn_submit = document.getElementById('btn_submit');
-const form = document.getElementById('reserve');
-const FormWindows = form.children;
-const firstError = document.getElementById('Error')
+
 
 
 //------------------------------------#1 TODO : fermer le modale------------------------------
@@ -41,26 +31,49 @@ function closeModal() {
 	modalbg.classList.remove('select-block');
 	modalbg.classList.add('select-hide');
 }
+//DOM elements
+const form = document.getElementById('reserve');
+const firstName = document.getElementById('first');
+const lastName = document.getElementById('last');
+const firsError = document.getElementById('firstError');
+const lastError = document.getElementById('lastError');
 
-form.addEventListener('submit',function(event){
-	firstError.innerHTML = '';
-	console.log('form submit');
-	console.log(event);
-	event.preventDefault();
-	console.log('firstname value');
-	const firstValue = first.nodeValue.trim();
-	console;log(firstValue);
-	console.log(firstValue.length);
+form.addEventListener('submit', function(event) {
+    firstError.innerHTML = '';
+    lastError.innerHTML = '';
+    firstName.style.border = '';
+    lastName.style.border = '';
+    console.log('form submit');
+    console.log(event);
+    event.preventDefault();
+    console.log('lastName value');
+    const firstValue = first.value.trim();
+    const lastValue = last.value.trim();
 
-	if(firstValue != "" && firstValue.length >= 2) {
-		const lastValue = last.nodeValue.trim();
-		if(lastValue != "" && firstValue.length >= 2) {
+    console.log(lastValue);
+    console.log(lastValue.length); 
 
-		}
-	} else {
-		firstError.innerHTML = 'Veuillez saisir un prénom valide. 2 caractères minimum !';
-	}
+    if(firstValue != '' && firstValue.length >= 2) {
+
+    } else{ 
+      firstError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Prénom.';
+      firstError.style.color = 'red';
+      firstError.style.fontSize = '0.9rem'
+      firstName.style.border = '2px solid red';
+      
+    }if(lastValue != '' && firstValue.length >= 2) {
+
+    } else {
+      lastError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Nom.';
+      lastError.style.color = 'red';
+      lastError.style.fontSize = '0.9rem'
+      lastName.style.border = '2px solid red';
+    }
+
+
+
 });
+
 
 // //------------------------------------#2 Validation des données ------------------------------
 // // Check DATA
