@@ -40,6 +40,7 @@ const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 const locations = document.getElementById('locations');
 const checkbox = document.getElementsByClassName('checkbox-input');
+const checkbox1 = document.getElementById('checkbox1');
 
 const firsError = document.getElementById('firstError');
 const lastError = document.getElementById('lastError');
@@ -47,6 +48,7 @@ const emailError = document.getElementById('emailError');
 const birthdateError = document.getElementById('birthdateError');
 const quantityError = document.getElementById('quantityError');
 const locationsError = document.getElementById('locationsError');
+const checkbox1Error = document.getElementById('checkbox1Error');
 
 form.addEventListener('submit', function(event) {
 
@@ -56,6 +58,7 @@ form.addEventListener('submit', function(event) {
   birthdateError.innerHTML = '';
   quantityError.innerHTML = '';
   locationsError.innerHTML = '';
+  checkbox1Error.innerHTML = '';
 
   firstName.style.border = '';
   lastName.style.border = '';
@@ -76,6 +79,7 @@ form.addEventListener('submit', function(event) {
   const birthDateValue = birthdate.value.trim();
   const quantityValue = quantity.value.trim();
   let checkboxLoc = false;
+  let checkbox1Cond = false;
 
   console.log(checkboxLoc);
 
@@ -98,7 +102,7 @@ form.addEventListener('submit', function(event) {
     lastName.style.border = '2px solid red';
   }
   
-  if(emailFormat.test(email.value)) {
+  if(emailFormat.test(email.value) == true) {
 
   } else {
     emailError.innerHTML = 'Veuillez entrer une adresse mail valide.';
@@ -148,6 +152,15 @@ form.addEventListener('submit', function(event) {
     locationsError.innerHTML = 'Vous devez choisir une option.';
     locationsError.style.color = 'red';
     locationsError.style.fontSize = '0.9rem';
+  }
+
+  if (checkbox1.checked) {
+    checkbox1Cond = true;
+
+  } else {
+    checkbox1Error.innerHTML = 'Vous devez vérifier que vous acceptez les termes et conditions.';
+    checkbox1Error.style.color = 'red';
+    checkbox1Error.style.fontSize = '0.9rem';
   }
 });
 
