@@ -49,80 +49,109 @@ const quantityError = document.getElementById('quantityError');
 const locationsError = document.getElementById('locationsError');
 
 form.addEventListener('submit', function(event) {
-    firstError.innerHTML = '';
-    lastError.innerHTML = '';
-    emailError.innerHTML = '';
-    birthdateError.innerHTML = '';
-    quantityError.innerHTML = '';
-    locationsError.innerHTML = '';
 
-    firstName.style.border = '';
-    lastName.style.border = '';
-    email.style.border = '';
-    birthdate.style.border = '';
-    quantity.style.border = '';
+  firstError.innerHTML = '';
+  lastError.innerHTML = '';
+  emailError.innerHTML = '';
+  birthdateError.innerHTML = '';
+  quantityError.innerHTML = '';
+  locationsError.innerHTML = '';
 
-    event.preventDefault();
+  firstName.style.border = '';
+  lastName.style.border = '';
+  email.style.border = '';
+  birthdate.style.border = '';
+  quantity.style.border = '';
 
-    const firstValue = first.value.trim();
-    const lastValue = last.value.trim();
-    const emailFormat = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/i;
-    const birthDateValue = birthdate.value.trim();
-    const quantityValue = quantity.value.trim();
+  console.log("form submit");
+  console.log(event);
 
-    if(firstValue != '' && firstValue.length >= 2) {
+  event.preventDefault();
 
-    } else{ 
-      firstError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Prénom.';
-      firstError.style.color = 'red';
-      firstError.style.fontSize = '0.9rem';
-      firstName.style.border = '2px solid red';
-      
-    }
+  console.log('checkboxLoc value');
+
+  const firstValue = first.value.trim();
+  const lastValue = last.value.trim();
+  const emailFormat = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/i;
+  const birthDateValue = birthdate.value.trim();
+  const quantityValue = quantity.value.trim();
+  const checkboxLoc = false;
+
+
+  console.log(checkboxLoc);
+  console.log(checkboxLoc.value);
+
+
+  if(firstValue != '' && firstValue.length >= 2) {
+
+  } else{ 
+    firstError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Prénom.';
+    firstError.style.color = 'red';
+    firstError.style.fontSize = '0.9rem';
+    firstName.style.border = '2px solid red';
     
-    if(lastValue != '' && lastValue.length >= 2) {
+  }
+  
+  if(lastValue != '' && lastValue.length >= 2) {
 
-    } else {
-      lastError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Nom.';
-      lastError.style.color = 'red';
-      lastError.style.fontSize = '0.9rem';
-      lastName.style.border = '2px solid red';
-    }
-    
-    if(emailFormat.test(email.value)) {
+  } else {
+    lastError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Nom.';
+    lastError.style.color = 'red';
+    lastError.style.fontSize = '0.9rem';
+    lastName.style.border = '2px solid red';
+  }
+  
+  if(emailFormat.test(email.value)) {
 
-    } else {
-      emailError.innerHTML = 'Veuillez entrer une adresse mail valide.';
-      emailError.style.color = 'red';
-      emailError.style.fontSize = '0.9rem';
-      email.style.border = '2px solid red';
-    }
+  } else {
+    emailError.innerHTML = 'Veuillez entrer une adresse mail valide.';
+    emailError.style.color = 'red';
+    emailError.style.fontSize = '0.9rem';
+    email.style.border = '2px solid red';
+  }
 
-    if(birthDateValue != '' && birthDateValue.length >= 8) {
+  if(birthDateValue != '' && birthDateValue.length >= 8) {
 
-    } else {
-      birthdateError.innerHTML = 'Vous devez entrer votre date de naissance.';
-      birthdateError.style.color = 'red';
-      birthdateError.style.fontSize = '0.9rem';
-      birthdate.style.border = '2px solid red';
-    }
+  } else {
+    birthdateError.innerHTML = 'Vous devez entrer votre date de naissance.';
+    birthdateError.style.color = 'red';
+    birthdateError.style.fontSize = '0.9rem';
+    birthdate.style.border = '2px solid red';
+  }
 
-    if(quantityValue != '' && quantityValue.length >= 1) {
+  if(quantityValue != '' && quantityValue.length >= 1) {
 
-    } else {
-      quantityError.innerHTML = 'Vous devez entrer une valeur numérique.';
-      quantityError.style.color = 'red';
-      quantityError.style.fontSize = '0.9rem';
-      quantity.style.border = '2px solid red';
-    }
+  } else {
+    quantityError.innerHTML = 'Vous devez entrer une valeur numérique.';
+    quantityError.style.color = 'red';
+    quantityError.style.fontSize = '0.9rem';
+    quantity.style.border = '2px solid red';
+  }
 
-    if(checkbox.checked) {
-
-    } else {
-      locationsError.innerHTML = 'Vous devez choisir une option.';
-      locationsError.style.color = 'red';
-      locationsError.style.fontSize = '0.9rem';
-    }
+  if(checkbox[0].checked) {
+    checkboxLoc = true;
+  } 
+  else if(checkbox[1].checked) {
+    checkboxLoc = true;
+  } 
+  else if(checkbox[2].checked) {
+    checkboxLoc = true;
+  }
+  else if(checkbox[3].checked) {
+    checkboxLoc = true;
+  }
+  else if(checkbox[4].checked) {
+    checkboxLoc = true;
+  }
+  else if(checkbox[5].checked) {
+    checkboxLoc = true;
+  }
+  
+  else {
+    locationsError.innerHTML = 'Vous devez choisir une option.';
+    locationsError.style.color = 'red';
+    locationsError.style.fontSize = '0.9rem';
+  }
 });
 
 
