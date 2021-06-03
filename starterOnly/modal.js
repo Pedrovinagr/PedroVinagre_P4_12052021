@@ -68,19 +68,16 @@ form.addEventListener('submit', function(event) {
 
   event.preventDefault();
 
-  console.log('checkboxLoc value');
+  console.log('checkboxLoc');
 
   const firstValue = first.value.trim();
   const lastValue = last.value.trim();
   const emailFormat = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/i;
   const birthDateValue = birthdate.value.trim();
   const quantityValue = quantity.value.trim();
-  const checkboxLoc = false;
-
+  let checkboxLoc = false;
 
   console.log(checkboxLoc);
-  console.log(checkboxLoc.value);
-
 
   if(firstValue != '' && firstValue.length >= 2) {
 
