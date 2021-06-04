@@ -156,7 +156,6 @@ form.addEventListener('submit', function(event) {
     checkbox1Error.style.fontSize = '0.9rem';
   }
 
-  return true;
 });
 
 
