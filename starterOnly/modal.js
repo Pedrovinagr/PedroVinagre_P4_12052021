@@ -21,6 +21,7 @@ const quantity = document.getElementById('quantity');
 const locations = document.getElementById('locations');
 const checkbox = document.getElementsByClassName('checkbox-input');
 const checkbox1 = document.getElementById('checkbox1');
+const validation = document.getElementById('btn_submit')
 
 const firsError = document.getElementById('firstError');
 const lastError = document.getElementById('lastError');
@@ -51,10 +52,16 @@ function closeModal() {
 
 //#2 Validation des données
 
-function valid () {
-  form.addEventListener('click', function(event) {
-    console.log('form submit');
 
+
+validation.addEventListener('submit', f_valid)
+console.log('validation submit');
+
+function f_valid () {
+  
+  form.addEventListener('click', function(event) {
+    console.log('form click');
+    
     firstError.innerHTML = '';
     lastError.innerHTML = '';
     emailError.innerHTML = '';
@@ -63,13 +70,20 @@ function valid () {
     lastName.style.border = '';
     email.style.border = '';
 
+    console.log(event);
     event.preventDefault();
     
+    console.log('firstname value');
+    console.log('lastname value');
+    console.log('email value');
+
     const firstValue = first.value.trim();
     const lastValue = last.value.trim();
     const emailFormat = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/i;
 
-    console.log(form.value);
+    console.log(firstValue);
+    console.log(lastValue);
+    console.log(emailFormat);
 
     if(firstValue != '' && firstValue.length >= 2) {
 
@@ -110,14 +124,23 @@ function valid () {
     birthdate.style.border = '';
     quantity.style.border = '';
 
+    console.log(event);
     event.preventDefault();
-    
+
+    console.log('birthDate value');
+    console.log('quantity value');
+    console.log('checkbox value');
+    console.log('checkbox1 value');
+
     const birthDateValue = birthdate.value.trim();
     const quantityValue = quantity.value.trim();
     let checkboxLoc = false;
     let checkbox1Cond = false;
 
-    console.log(form.value);
+    console.log(birthDateValue);
+    console.log(quantityValue);
+    console.log(checkboxLoc);
+    console.log(checkbox1Cond);
 
     if(birthDateValue != '' && birthDateValue.length >= 8) {
 
@@ -287,6 +310,10 @@ function valid () {
 //   return false;
 // });
 
+
+
+
+
 // //------------------------------------#2 Validation des données ------------------------------
 // // Check DATA
 
@@ -408,3 +435,19 @@ function valid () {
 // 	}
 // 	return false;
 // })
+
+// firstName.addEventListener('input', function (event) {
+//   event.preventDefault();
+
+//   if (firstName.validity.valid) {
+//     firstError.innerHTML ="";
+//   }
+// },false);
+
+// form.addEventListener("submit", function (event) {
+//   event.preventDefault();
+
+//   if (!firstName.validity.valid) {
+//     error.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ de Prénom.";
+//   }
+// }, false);
