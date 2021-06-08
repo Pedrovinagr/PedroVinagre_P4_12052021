@@ -243,12 +243,15 @@ input[data-error]::after {
   transition: 0.3s;
   opacity: 0;
 }
+.checkbox-input-town {
+  display: none;
+}
 
 .checkbox-input {
   display: none;
 }
 
-.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
+.checkbox-input-town:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }

@@ -19,7 +19,7 @@ const email = document.getElementById('email');
 const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 const locations = document.getElementById('locations');
-const checkbox = document.getElementsByClassName('checkbox-input');
+const checkbox = document.getElementsByClassName('checkbox-input-town');
 const checkbox1 = document.getElementById('checkbox1');
 const validation = document.getElementById('btn_submit')
 
@@ -52,263 +52,141 @@ function closeModal() {
 
 //#2 Validation des données
 
+form.addEventListener('submit', function(event) {
+  console.log('form submit');
 
+  firstError.innerHTML = '';
+  lastError.innerHTML = '';
+  emailError.innerHTML = '';
+  birthdateError.innerHTML = '';
+  quantityError.innerHTML = '';
+  locationsError.innerHTML = '';
+  checkbox1Error.innerHTML = '';
 
-validation.addEventListener('submit', f_valid)
-console.log('validation submit');
+  firstName.style.border = '';
+  lastName.style.border = '';
+  email.style.border = '';
+  birthdate.style.border = '';
+  quantity.style.border = '';
 
-function f_valid () {
+  event.preventDefault();
   
-  form.addEventListener('click', function(event) {
-    console.log('form click');
+  const firstValue = first.value.trim();
+  const lastValue = last.value.trim();
+  const emailFormat = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/i;
+  const birthDateValue = birthdate.value.trim();
+  const quantityValue = quantity.value.trim();
+  let formIsValid = false;
+
+  console.log(form.value);
+
+  if(firstValue != '' && firstValue.length >= 2) {
+
+  } else{ 
+    firstError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Prénom.';
+    firstError.style.color = 'red';
+    firstError.style.fontSize = '0.9rem';
+    firstName.style.border = '2px solid red';
     
-    firstError.innerHTML = '';
-    lastError.innerHTML = '';
-    emailError.innerHTML = '';
-
-    firstName.style.border = '';
-    lastName.style.border = '';
-    email.style.border = '';
-
-    console.log(event);
-    event.preventDefault();
-    
-    console.log('firstname value');
-    console.log('lastname value');
-    console.log('email value');
-
-    const firstValue = first.value.trim();
-    const lastValue = last.value.trim();
-    const emailFormat = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/i;
-
-    console.log(firstValue);
-    console.log(lastValue);
-    console.log(emailFormat);
-
-    if(firstValue != '' && firstValue.length >= 2) {
-
-    } else{ 
-      firstError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Prénom.';
-      firstError.style.color = 'red';
-      firstError.style.fontSize = '0.9rem';
-      firstName.style.border = '2px solid red';
-      
-    }
-    
-    if(lastValue != '' && lastValue.length >= 2) {
-
-    } else {
-      lastError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Nom.';
-      lastError.style.color = 'red';
-      lastError.style.fontSize = '0.9rem';
-      lastName.style.border = '2px solid red';
-    }
-    
-    if(emailFormat.test(email.value) == true) {
-
-    } else {
-      emailError.innerHTML = 'Veuillez entrer une adresse mail valide.';
-      emailError.style.color = 'red';
-      emailError.style.fontSize = '0.9rem';
-      email.style.border = '2px solid red';
-    }
-  });
-
-  form.addEventListener('submit', function(event) {
-    console.log('form submit');
-    birthdateError.innerHTML = '';
-    quantityError.innerHTML = '';
-    locationsError.innerHTML = '';
-    checkbox1Error.innerHTML = '';
-
-    birthdate.style.border = '';
-    quantity.style.border = '';
-
-    console.log(event);
-    event.preventDefault();
-
-    console.log('birthDate value');
-    console.log('quantity value');
-    console.log('checkbox value');
-    console.log('checkbox1 value');
-
-    const birthDateValue = birthdate.value.trim();
-    const quantityValue = quantity.value.trim();
-    let checkboxLoc = false;
-    let checkbox1Cond = false;
-
-    console.log(birthDateValue);
-    console.log(quantityValue);
-    console.log(checkboxLoc);
-    console.log(checkbox1Cond);
-
-    if(birthDateValue != '' && birthDateValue.length >= 8) {
-
-    } else {
-      birthdateError.innerHTML = 'Vous devez entrer votre date de naissance.';
-      birthdateError.style.color = 'red';
-      birthdateError.style.fontSize = '0.9rem';
-      birthdate.style.border = '2px solid red';
-    }
-
-    if(quantityValue != '' && quantityValue.length >= 1) {
-
-    } else {
-      quantityError.innerHTML = 'Vous devez entrer une valeur numérique.';
-      quantityError.style.color = 'red';
-      quantityError.style.fontSize = '0.9rem';
-      quantity.style.border = '2px solid red';
-    }
-
-    if(checkbox[0].checked) {
-      checkboxLoc = true;
-    } 
-    else if(checkbox[1].checked) {
-      checkboxLoc = true;
-    } 
-    else if(checkbox[2].checked) {
-      checkboxLoc = true;
-    }
-    else if(checkbox[3].checked) {
-      checkboxLoc = true;
-    }
-    else if(checkbox[4].checked) {
-      checkboxLoc = true;
-    }
-    else if(checkbox[5].checked) {
-      checkboxLoc = true;
-    }
-    
-    else {
-      locationsError.innerHTML = 'Vous devez choisir une option.';
-      locationsError.style.color = 'red';
-      locationsError.style.fontSize = '0.9rem';
-    }
-
-    if (checkbox1.checked) {
-      checkbox1Cond = true;
-
-    } else {
-      checkbox1Error.innerHTML = 'Vous devez vérifier que vous acceptez les termes et conditions.';
-      checkbox1Error.style.color = 'red';
-      checkbox1Error.style.fontSize = '0.9rem';
-    }
-    return false;
-  });
-
-}
-
-
-// form.addEventListener('submit', function(event) {
-//   console.log('form submit');
-
-//   firstError.innerHTML = '';
-//   lastError.innerHTML = '';
-//   emailError.innerHTML = '';
-//   birthdateError.innerHTML = '';
-//   quantityError.innerHTML = '';
-//   locationsError.innerHTML = '';
-//   checkbox1Error.innerHTML = '';
-
-//   firstName.style.border = '';
-//   lastName.style.border = '';
-//   email.style.border = '';
-//   birthdate.style.border = '';
-//   quantity.style.border = '';
-
-//   event.preventDefault();
+  }
   
-//   const firstValue = first.value.trim();
-//   const lastValue = last.value.trim();
-//   const emailFormat = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/i;
-//   const birthDateValue = birthdate.value.trim();
-//   const quantityValue = quantity.value.trim();
-//   let checkboxLoc = false;
-//   let checkbox1Cond = false;
+  if(lastValue != '' && lastValue.length >= 2) {
 
-//   console.log(form.value);
-
-//   if(firstValue != '' && firstValue.length >= 2) {
-
-//   } else{ 
-//     firstError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Prénom.';
-//     firstError.style.color = 'red';
-//     firstError.style.fontSize = '0.9rem';
-//     firstName.style.border = '2px solid red';
-    
-//   }
+  } else {
+    lastError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Nom.';
+    lastError.style.color = 'red';
+    lastError.style.fontSize = '0.9rem';
+    lastName.style.border = '2px solid red';
+  }
   
-//   if(lastValue != '' && lastValue.length >= 2) {
+  if(emailFormat.test(email.value)) {
 
-//   } else {
-//     lastError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Nom.';
-//     lastError.style.color = 'red';
-//     lastError.style.fontSize = '0.9rem';
-//     lastName.style.border = '2px solid red';
-//   }
+  } else {
+    emailError.innerHTML = 'Veuillez entrer une adresse mail valide.';
+    emailError.style.color = 'red';
+    emailError.style.fontSize = '0.9rem';
+    email.style.border = '2px solid red';
+  }
+
+  if(birthDateValue != '' && birthDateValue.length >= 8) {
+
+  } else {
+    birthdateError.innerHTML = 'Vous devez entrer votre date de naissance.';
+    birthdateError.style.color = 'red';
+    birthdateError.style.fontSize = '0.9rem';
+    birthdate.style.border = '2px solid red';
+  }
+
+  if(quantityValue != '' && quantityValue.length >= 1) {
+
+  } else {
+    quantityError.innerHTML = 'Vous devez entrer une valeur numérique.';
+    quantityError.style.color = 'red';
+    quantityError.style.fontSize = '0.9rem';
+    quantity.style.border = '2px solid red';
+  }
+
+  var townIsSelected = false;
+  var townIsSelectedValid = townIsSelected.includes(true);
+
+  for(var i = 0; i < checkbox.length - 1; i++) {
+    console.log(checkbox[i].checked);
+    if(checkbox[i].checked) {
+      townIsSelectedValid = true;
+    }
+    if(townIsSelected && checkbox1.checked) {
+      formIsValid = true;
+    } else {
+      if(!checkbox[i].checked) {
+        locationsError.innerHTML = 'Vous devez choisir une option.';
+        locationsError.style.color = 'red';
+        locationsError.style.fontSize = '0.9rem';
+      }
+      if(!checkbox1.checked) {
+        checkbox1Error.innerHTML = 'Vous devez vérifier que vous acceptez les termes et conditions.';
+        checkbox1Error.style.color = 'red';
+        checkbox1Error.style.fontSize = '0.9rem';
+      }
+    }
+  }
+   
+});
+
+
+//if(checkbox[0].checked) {
+  //   checkboxLoc = true;
+  // } 
+  // else if(checkbox[1].checked) {
+  //   checkboxLoc = true;
+  // } 
+  // else if(checkbox[2].checked) {
+  //   checkboxLoc = true;
+  // }
+  // else if(checkbox[3].checked) {
+  //   checkboxLoc = true;
+  // }
+  // else if(checkbox[4].checked) {
+  //   checkboxLoc = true;
+  // }
+  // else if(checkbox[5].checked) {
+  //   checkboxLoc = true;
+  // }
   
-//   if(emailFormat.test(email.value) == true) {
+  // else {
+  //   locationsError.innerHTML = 'Vous devez choisir une option.';
+  //   locationsError.style.color = 'red';
+  //   locationsError.style.fontSize = '0.9rem';
+  // }
 
-//   } else {
-//     emailError.innerHTML = 'Veuillez entrer une adresse mail valide.';
-//     emailError.style.color = 'red';
-//     emailError.style.fontSize = '0.9rem';
-//     email.style.border = '2px solid red';
-//   }
+  // if (checkbox1.checked) {
+  //   checkbox1Cond = true;
 
-//   if(birthDateValue != '' && birthDateValue.length >= 8) {
-
-//   } else {
-//     birthdateError.innerHTML = 'Vous devez entrer votre date de naissance.';
-//     birthdateError.style.color = 'red';
-//     birthdateError.style.fontSize = '0.9rem';
-//     birthdate.style.border = '2px solid red';
-//   }
-
-//   if(quantityValue != '' && quantityValue.length >= 1) {
-
-//   } else {
-//     quantityError.innerHTML = 'Vous devez entrer une valeur numérique.';
-//     quantityError.style.color = 'red';
-//     quantityError.style.fontSize = '0.9rem';
-//     quantity.style.border = '2px solid red';
-//   }
-
-//   if(checkbox[0].checked) {
-//     checkboxLoc = true;
-//   } 
-//   else if(checkbox[1].checked) {
-//     checkboxLoc = true;
-//   } 
-//   else if(checkbox[2].checked) {
-//     checkboxLoc = true;
-//   }
-//   else if(checkbox[3].checked) {
-//     checkboxLoc = true;
-//   }
-//   else if(checkbox[4].checked) {
-//     checkboxLoc = true;
-//   }
-//   else if(checkbox[5].checked) {
-//     checkboxLoc = true;
-//   }
-  
-//   else {
-//     locationsError.innerHTML = 'Vous devez choisir une option.';
-//     locationsError.style.color = 'red';
-//     locationsError.style.fontSize = '0.9rem';
-//   }
-
-//   if (checkbox1.checked) {
-//     checkbox1Cond = true;
-
-//   } else {
-//     checkbox1Error.innerHTML = 'Vous devez vérifier que vous acceptez les termes et conditions.';
-//     checkbox1Error.style.color = 'red';
-//     checkbox1Error.style.fontSize = '0.9rem';
-//   }
-//   return false;
-// });
+  // } else {
+  //   checkbox1Error.innerHTML = 'Vous devez vérifier que vous acceptez les termes et conditions.';
+  //   checkbox1Error.style.color = 'red';
+  //   checkbox1Error.style.fontSize = '0.9rem';
+  // }
+  // return false;
 
 
 
