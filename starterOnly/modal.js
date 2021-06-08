@@ -127,19 +127,23 @@ form.addEventListener('submit', function(event) {
   }
 
   var townIsSelected = false;
+  var checkboxValue = [];
 
   for(var i = 0; i < checkbox.length - 1; i++) {
     console.log(checkbox[i].checked);
+    checkboxValue.push(checkbox[i].checked);
     if(checkbox[i].checked) {
       townIsSelected = true;
     }
     if(townIsSelected.checked) {
       formIsValid = true;
     } else {
-      if(!checkbox[i].checked) {
+      if(!checkboxValue.includes(true)) {
         locationsError.innerHTML = 'Vous devez choisir une option.';
         locationsError.style.color = 'red';
         locationsError.style.fontSize = '0.9rem';
+      }else {
+        locationsError.innerHTML = "";
       }
     }
     if(checkbox1.checked) {
