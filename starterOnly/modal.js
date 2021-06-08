@@ -127,14 +127,13 @@ form.addEventListener('submit', function(event) {
   }
 
   var townIsSelected = false;
-  var townIsSelectedValid = townIsSelected.includes(true);
 
   for(var i = 0; i < checkbox.length - 1; i++) {
     console.log(checkbox[i].checked);
     if(checkbox[i].checked) {
-      townIsSelectedValid = true;
+      townIsSelected = true;
     }
-    if(townIsSelected && checkbox1.checked) {
+    if(townIsSelected.checked) {
       formIsValid = true;
     } else {
       if(!checkbox[i].checked) {
@@ -142,6 +141,10 @@ form.addEventListener('submit', function(event) {
         locationsError.style.color = 'red';
         locationsError.style.fontSize = '0.9rem';
       }
+    }
+    if(checkbox1.checked) {
+      formIsValid = true;
+    } else {
       if(!checkbox1.checked) {
         checkbox1Error.innerHTML = 'Vous devez vérifier que vous acceptez les termes et conditions.';
         checkbox1Error.style.color = 'red';
