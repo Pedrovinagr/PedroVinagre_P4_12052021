@@ -170,7 +170,8 @@ form.addEventListener('submit', function infoValid(event) {
   console.log(typeof checkbox1);
 
   if(firtIsValid == true && lastIsValid == true && emailIsValid == true && birthdateIsValid ==true && quantityIsValid == true && formIsValid == true) {
-    alert('formulaire envoyé')
+    // alert('formulaire envoyé')
+    document.querySelectorAll('.formData').style.display = 'none';
   }
   else {
     
