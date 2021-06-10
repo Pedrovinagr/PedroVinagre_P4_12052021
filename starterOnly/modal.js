@@ -22,6 +22,7 @@ const locations = document.getElementById('locations');
 const checkbox = document.getElementsByClassName('checkbox-input-town');
 const checkbox1 = document.getElementById('checkbox1');
 const validation = document.getElementById('btn_submit')
+const formValide = document.getElementsByClassName('formData')
 
 const firsError = document.getElementById('firstError');
 const lastError = document.getElementById('lastError');
@@ -52,8 +53,7 @@ function closeModal() {
 
 //#2 Validation des données
 
-form.addEventListener('submit', function(event) {
-  console.log('form submit');
+form.addEventListener('submit', function infoValid(event) {
 
   firstError.innerHTML = '';
   lastError.innerHTML = '';
@@ -76,22 +76,25 @@ form.addEventListener('submit', function(event) {
   const emailFormat = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/i;
   const birthDateValue = birthdate.value.trim();
   const quantityValue = quantity.value.trim();
+  let firtIsValid = false;
+  let lastIsValid = false;
+  let emailIsValid = false;
+  let birthdateIsValid = false;
+  let quantityIsValid = false;
   let formIsValid = false;
 
-  console.log(form.value);
 
   if(firstValue != '' && firstValue.length >= 2) {
-
+    firtIsValid = true
   } else{ 
     firstError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Prénom.';
     firstError.style.color = 'red';
     firstError.style.fontSize = '0.9rem';
     firstName.style.border = '2px solid red';
-    
   }
   
   if(lastValue != '' && lastValue.length >= 2) {
-
+    lastIsValid = true
   } else {
     lastError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ de Nom.';
     lastError.style.color = 'red';
@@ -100,7 +103,7 @@ form.addEventListener('submit', function(event) {
   }
   
   if(emailFormat.test(email.value)) {
-
+    emailIsValid = true
   } else {
     emailError.innerHTML = 'Veuillez entrer une adresse mail valide.';
     emailError.style.color = 'red';
@@ -109,7 +112,7 @@ form.addEventListener('submit', function(event) {
   }
 
   if(birthDateValue != '' && birthDateValue.length >= 8) {
-
+    birthdateIsValid = true
   } else {
     birthdateError.innerHTML = 'Vous devez entrer votre date de naissance.';
     birthdateError.style.color = 'red';
@@ -118,7 +121,7 @@ form.addEventListener('submit', function(event) {
   }
 
   if(quantityValue != '' && quantityValue.length >= 1) {
-
+    quantityIsValid = true
   } else {
     quantityError.innerHTML = 'Vous devez entrer une valeur numérique.';
     quantityError.style.color = 'red';
@@ -130,7 +133,6 @@ form.addEventListener('submit', function(event) {
   var checkboxValue = [];
 
   for(var i = 0; i < checkbox.length - 1; i++) {
-    console.log(checkbox[i].checked);
     checkboxValue.push(checkbox[i].checked);
     if(checkbox[i].checked) {
       townIsSelected = true;
@@ -156,7 +158,23 @@ form.addEventListener('submit', function(event) {
       }
     }
   }
-   
+  console.log(firstValue.length);
+  console.log(typeof firstValue);
+  console.log(lastValue.length);
+  console.log(typeof lastValue);
+  console.log(emailFormat.length);
+  console.log(typeof emailFormat);
+  console.log(typeof birthDateValue);
+  console.log(typeof quantityValue);
+  console.log(typeof checkbox);
+  console.log(typeof checkbox1);
+
+  if(firtIsValid == true && lastIsValid == true && emailIsValid == true && birthdateIsValid ==true && quantityIsValid == true && formIsValid == true) {
+    alert('formulaire envoyé')
+  }
+  else {
+    
+  } 
 });
 
 
