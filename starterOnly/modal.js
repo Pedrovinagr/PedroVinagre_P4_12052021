@@ -22,7 +22,7 @@ const locations = document.getElementById('locations');
 const checkbox = document.getElementsByClassName('checkbox-input-town');
 const checkbox1 = document.getElementById('checkbox1');
 const validation = document.getElementById('btn_submit')
-const formValide = document.getElementsByClassName('formData')
+const formValide = document.querySelector('.formData')
 
 const firsError = document.getElementById('firstError');
 const lastError = document.getElementById('lastError');
@@ -171,7 +171,8 @@ form.addEventListener('submit', function infoValid(event) {
 
   if(firtIsValid == true && lastIsValid == true && emailIsValid == true && birthdateIsValid ==true && quantityIsValid == true && formIsValid == true) {
     // alert('formulaire envoyé')
-    document.querySelectorAll('.formData').style.display = 'none';
+    // document.querySelectorAll('.formData').style.display = 'none';
+    formValide.classList.add('select-hide');
   }
   else {
     
