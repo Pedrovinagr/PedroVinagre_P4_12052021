@@ -197,10 +197,7 @@ form.addEventListener('submit', function infoValid(event) {
     validForm.addEventListener('click', function(){
       closeForm.style.display = 'none';
       form.reset();
-      // closeModal();
-      // resumModal();
-      // initModal();
-
+      window.location.reload();
     });
   }
 
