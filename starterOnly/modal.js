@@ -197,9 +197,9 @@ form.addEventListener('submit', function infoValid(event) {
     validForm.addEventListener('click', function(){
       closeForm.style.display = 'none';
       form.reset();
-      closeModal();
-      resumModal();
-      initModal();
+      // closeModal();
+      // resumModal();
+      // initModal();
 
     });
   }
