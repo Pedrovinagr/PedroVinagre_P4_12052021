@@ -21,8 +21,6 @@ const quantity = document.getElementById('quantity');
 const locations = document.getElementById('locations');
 const checkbox = document.getElementsByClassName('checkbox-input-town');
 const checkbox1 = document.getElementById('checkbox1');
-// const validation = document.getElementById('btn_submit')
-// const formValide = document.querySelector('.formData')
 
 const firsError = document.getElementById('firstError');
 const lastError = document.getElementById('lastError');
@@ -175,30 +173,46 @@ form.addEventListener('submit', function infoValid(event) {
   var birthdateClose = document.getElementById('birthdate_close');
   var quantityClose = document.getElementById('quantity_close');
   var locationClose = document.getElementById('locations');
-  var textLabelClose = document.getElementById('text_label_Close');
+  var textLabelmessage = document.getElementById('text_label_Close');
   var checkboxInputClose = document.getElementById('checkbox-input_close')
+  var closeBtnClose = document.getElementById('close')
+  var NewBtn = document.getElementById('btn_submit')
 
   if(firtIsValid == true && lastIsValid == true && emailIsValid == true && birthdateIsValid ==true && quantityIsValid == true && formIsValid == true) {
-    // alert('formulaire envoyé')
-    // document.querySelectorAll('.formData').style.display = 'none';
-    // formValide.classList.add('select-hide');
-    
     firstNameClose.style.display = 'none';
     lasttNameClose.style.display = 'none';
     emailClose.style.display = 'none';
     birthdateClose.style.display = 'none';
     quantityClose.style.display = 'none';
     locationClose.style.display = 'none';
-    textLabelClose.style.display = 'none';
     checkboxInputClose.style.display = 'none';
+    closeBtnClose.style.display = 'none';
 
-    firstError.innerHTML = 'Merci ! Votre réservation a été reçue.';
+    textLabelmessage.innerHTML = 'Merci ! Votre réservation a été reçue.'
+    textLabelmessage.style.fontSize = '2rem'
+    NewBtn.value = "FERMER";
+    var validForm = document.getElementById('reserve')
+    var closeForm = document.querySelector('.bground')
+
+    validForm.addEventListener('click', function(){
+      closeForm.style.display = 'none';
+      form.reset();
+
+    });
   }
+
   else {
     
   } 
 });
 
+// var validForm = document.getElementById('reserve')
+// var closeForm = document.querySelector('.bground')
+
+// validForm.addEventListener('submit', function(){
+//   closeForm.style.display = 'none';
+
+// });
 
 //if(checkbox[0].checked) {
   //   checkboxLoc = true;
