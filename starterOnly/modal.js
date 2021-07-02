@@ -156,16 +156,6 @@ form.addEventListener('submit', function infoValid(event) {
       }
     }
   }
-  console.log(firstValue.length);
-  console.log(typeof firstValue);
-  console.log(lastValue.length);
-  console.log(typeof lastValue);
-  console.log(emailFormat.length);
-  console.log(typeof emailFormat);
-  console.log(typeof birthDateValue);
-  console.log(typeof quantityValue);
-  console.log(typeof checkbox);
-  console.log(typeof checkbox1);
   
   var firstNameClose = document.getElementById('first_close');
   var lasttNameClose = document.getElementById('last_close');
